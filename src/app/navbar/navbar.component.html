@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/" class="brand-link">Campus News</a>
+  </div>
+
+  <!-- Mobile menu button -->
+  <button class="mobile-menu-button" (click)="toggleMobileMenu()">
+    <span class="menu-icon"></span>
+  </button>
+
+  <!-- Desktop menu -->
+  <div class="navbar-menu" [class.show-mobile]="showMobileMenu">
+    <!-- Public Links -->
+    <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+
+    <!-- Welcome Text -->
+    <ng-container *ngIf="isLoggedIn">
+      <span class="welcome-text">Welcome</span>
+      <!-- <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a> -->
+      <!-- Admin Links -->
+      <ng-container *ngIf="isAdmin">
+        <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+      </ng-container>
+
+
+
+      <button (click)="logout()" class="nav-button">Logout</button>
+    </ng-container>
+
+    <!-- Auth Links -->
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
+    </ng-container>
+  </div>
+</nav> 

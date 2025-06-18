@@ -1,0 +1,99 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>{{ isLoginMode ? 'Sign In' : 'Create Account' }}</h2>
+    <p class="subtitle">{{ isLoginMode ? 'Welcome back! Please sign in to continue.' : 'Join us! Create your account to get started.' }}</p>
+
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.is-invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched"
+        />
+        <div class="error-message" *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched">
+          <span *ngIf="authForm.get('email')?.errors?.['required']">Email is required</span>
+          <span *ngIf="authForm.get('email')?.errors?.['email']">Invalid email</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          [class.is-invalid]="authForm.get('password')?.invalid && authForm.get('password')?.touched"
+        />
+        <div class="error-message" *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched">
+          <span *ngIf="authForm.get('password')?.errors?.['required']">Password is required</span>
+          <span *ngIf="authForm.get('password')?.errors?.['minlength']">Minimum 6 characters</span>
+        </div>
+      </div>
+
+      <!-- Extra Fields for Register -->
+      <ng-container *ngIf="!isLoginMode">
+        <div class="form-group">
+          <label for="username">Full Name</label>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            placeholder="Enter your full name"
+            [class.is-invalid]="authForm.get('username')?.invalid && authForm.get('username')?.touched"
+          />
+          <div class="error-message" *ngIf="authForm.get('username')?.invalid && authForm.get('username')?.touched">
+            Full name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select
+            id="role"
+            formControlName="role"
+            [class.is-invalid]="authForm.get('role')?.invalid && authForm.get('role')?.touched"
+          >
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="authForm.get('role')?.value === 'admin'">
+          <label for="adminCode">Admin Verification Code</label>
+          <input
+            type="password"
+            id="adminCode"
+            formControlName="adminCode"
+            placeholder="Enter admin verification code"
+            [class.is-invalid]="authForm.get('adminCode')?.invalid && authForm.get('adminCode')?.touched"
+          />
+          <div class="help-text">Contact system admin for code.</div>
+        </div>
+      </ng-container>
+
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" >
+          <span *ngIf="isLoading" class="spinner"></span>
+          {{ isLoginMode ? 'Sign In' : 'Create Account' }}
+        </button>
+
+        <!-- Switch -->
+        <a href="javascript:void(0)" class="btn-switch" (click)="onSwitchMode()">
+          {{ isLoginMode ? 'Need an account? Sign up' : 'Already have an account? Sign in' }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="container mt-4">
+  <!-- Search and Filter Section -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="input-group">
+      <input 
+        type="text" 
+          class="form-control"
+        [(ngModel)]="searchQuery" 
+        (keyup.enter)="onSearch()"
+        placeholder="Search news..."
+      >
+        <button class="btn btn-primary" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <select 
+        class="form-select"
+        [(ngModel)]="selectedCategory" 
+        (change)="onCategoryChange()"
+      >
+        <option [ngValue]="null">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{category}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- News Table -->
+  <div class="card" *ngIf="!loading">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of news">
+          <td>{{ article.title }}</td>
+          <td>{{ article.category }}</td>
+              <td>
+                <button class="btn btn-sm btn-primary me-2" [routerLink]="['/admin/news/edit', article.id]">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="onDelete(article)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="news.length === 0">
+              <td colspan="3" class="text-center">No news articles found.</td>
+        </tr>
+      </tbody>
+    </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation" class="mt-4" *ngIf="totalItems > 0">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+    <button 
+          class="page-link"
+      [disabled]="currentPage === 1"
+      (click)="onPageChange(currentPage - 1)"
+    >
+      Previous
+    </button>
+      </li>
+      
+      <li class="page-item">
+        <span class="page-link">
+          Page {{ currentPage }} of {{ Math.ceil(totalItems / pageSize) }}
+        </span>
+      </li>
+      
+      <li class="page-item" [class.disabled]="currentPage >= Math.ceil(totalItems / pageSize)">
+    <button 
+          class="page-link"
+      [disabled]="currentPage >= Math.ceil(totalItems / pageSize)"
+      (click)="onPageChange(currentPage + 1)"
+    >
+      Next
+    </button>
+      </li>
+    </ul>
+  </nav>
+</div> 

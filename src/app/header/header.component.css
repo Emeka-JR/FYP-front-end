@@ -1,0 +1,122 @@
+/* General Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 15px 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensures no extra width */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Ensure body and html do not have extra margin or padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffc107;
+  white-space: nowrap; /* Prevents logo from breaking into new lines */
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Prevents text from overflowing */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap; /* Ensures content wraps if the screen is small */
+  overflow: hidden; /* Prevents long nav items from causing overflow */
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s ease;
+  white-space: nowrap; /* Ensures text doesn't break */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-links a:hover {
+  color: #ffc107;
+}
+
+/* Admin Button */
+.admin-btn {
+  padding: 8px 15px;
+  background-color: #ffc107;
+  color: #222;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.admin-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  background: white;
+  width: 25px;
+  height: 3px;
+  margin: 4px;
+  border-radius: 2px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #222;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}

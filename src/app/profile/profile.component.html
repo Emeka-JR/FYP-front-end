@@ -1,0 +1,14 @@
+<div class="profile-container" *ngIf="user as currentUser; else loading">
+  <h2>Welcome, {{ currentUser.username }}!</h2>
+
+  <div class="profile-details">
+    <p><strong>Email:</strong> {{ currentUser.email }}</p>
+    <p><strong>Role:</strong> {{ currentUser.role | titlecase }}</p>
+  </div>
+
+  <button class="btn-logout" (click)="logout()">Logout</button>
+</div>
+
+<ng-template #loading>
+  <p>Loading profile...</p>
+</ng-template>

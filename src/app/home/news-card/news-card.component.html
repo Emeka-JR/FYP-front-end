@@ -1,0 +1,16 @@
+<div class="news-card">
+    <div class="news-header">
+      <span class="news-category">{{ news.category }}</span>
+      <span class="news-date">{{ news.created_at }}</span>
+    </div>
+    <div class="news-image">
+      <img [src]="news.image_url || 'assets/default-news.jpg'" alt="News Image">
+    </div>
+    <div class="news-content">
+      <h3 class="news-title">{{ news.title }}</h3>
+      <!-- <p class="news-author" *ngIf="news.author">By: {{ news.author }}</p> -->
+      <p class="news-description">{{ news.content | slice:0:100 }}...</p>
+      <button class="news-button" (click)="readMore()">Read More</button>
+    </div>
+  </div>
+  

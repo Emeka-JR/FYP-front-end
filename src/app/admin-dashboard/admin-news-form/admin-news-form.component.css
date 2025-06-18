@@ -1,0 +1,222 @@
+.admin-news {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  th {
+    background: #007bff;
+    color: white;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  .news-form-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .form-header h1 {
+    color: #333;
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  }
+  
+  .form-group input.is-invalid,
+  .form-group textarea.is-invalid,
+  .form-group select.is-invalid {
+    border-color: #dc3545;
+  }
+  
+  .validation-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  .help-text {
+    color: #666;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  .classify-btn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .classify-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+  }
+  
+  .classify-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .classification-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .classification-result h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  .classification-result p {
+    margin: 0.25rem 0;
+    color: #555;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .cancel-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #555;
+  }
+  
+  .cancel-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+  }
+  
+  .submit-btn {
+    background-color: #4a90e2;
+    border: none;
+    color: white;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    background-color: #357abd;
+  }
+  
+  .cancel-btn:disabled,
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    color: #721c24;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .news-form-container {
+      margin: 1rem;
+      padding: 1rem;
+    }
+  
+    .form-header h1 {
+      font-size: 1.5rem;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  
+    .cancel-btn,
+    .submit-btn {
+      width: 100%;
+    }
+  }

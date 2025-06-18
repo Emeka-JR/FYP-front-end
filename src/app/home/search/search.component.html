@@ -1,0 +1,7 @@
+<div class="search--news">
+    <input class="search-news-input" #searchInput>
+    <button class="btn btn-search" (click)="updateSearchText(searchInput)">Search</button>
+</div>
+<div class="search-result-for">
+    <p *ngIf="searchText!=''"><strong>Search result for:</strong> {{searchText}}</p>
+</div>

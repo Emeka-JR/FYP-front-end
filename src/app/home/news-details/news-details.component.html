@@ -1,0 +1,11 @@
+<div class="container mt-4" *ngIf="news">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">{{ news.title }}</h1>
+      <p class="text-muted">{{ news.category }} | {{ news.created_at | date:'medium' }}</p>
+      <img [src]="news.image_url || 'assets/default-news.jpg'" class="img-fluid mb-3" [alt]="news.title">
+      <p class="card-text">{{ news.content }}</p>
+      <button class="btn btn-secondary mt-3" (click)="goBack()">Back</button>
+    </div>
+  </div>
+</div>
