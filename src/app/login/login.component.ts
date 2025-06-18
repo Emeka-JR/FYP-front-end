@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../Services/auth.service';
 
@@ -41,6 +41,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  private setEmailValidators() {
+    const emailControl = this.authForm.get('email');
+    if (!emailControl) return;
+    if (this.isLoginMode) {
+      emailControl.setValidators([Validators.required, Validators.email]);
+    } else {
+      emailControl.setValidators([Validators.required, Validators.email, this.emailDomainValidator.bind(this)]);
+    }
+    emailControl.updateValueAndValidity();
+  }
+
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
     this.error = null;
@@ -52,12 +63,14 @@ export class LoginComponent implements OnInit {
       adminCode: ''
     });
     this.updateValidators();
+    this.setEmailValidators();
   }
 
   private updateValidators() {
     const usernameControl = this.authForm.get('username');
     const roleControl = this.authForm.get('role');
     const adminCodeControl = this.authForm.get('adminCode');
+    this.setEmailValidators();
 
     if (this.isLoginMode) {
       usernameControl?.clearValidators();
@@ -107,5 +120,19 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+  }
+
+  emailDomainValidator(control: AbstractControl): ValidationErrors | null {
+    if (!this.authForm) return null; // Form not initialized yet
+    const email = control.value;
+    const role = this.authForm.get('role')?.value;
+    if (!email || !role) return null;
+    if (role === 'student' && !email.endsWith('@stu.cu.edu.ng')) {
+      return { domain: 'Student emails must end with @stu.cu.edu.ng' };
+    }
+    if (role === 'admin' && !email.endsWith('@cu.edu.ng')) {
+      return { domain: 'Admin emails must end with @cu.edu.ng' };
+    }
+    return null;
   }
 }

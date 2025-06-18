@@ -11,7 +11,7 @@
           type="email"
           id="email"
           formControlName="email"
-          placeholder="Enter your email"
+          placeholder="Enter your school email"
           [class.is-invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched"
         />
         <div class="error-message" *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched">

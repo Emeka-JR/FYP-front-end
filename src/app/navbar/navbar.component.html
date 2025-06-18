@@ -7,6 +7,7 @@
   <button class="mobile-menu-button" (click)="toggleMobileMenu()">
     <span class="menu-icon"></span>
   </button>
+  <span *ngIf="isLoggedIn" class="welcome-text">Hello, {{ fullName }}</span>
 
   <!-- Desktop menu -->
   <div class="navbar-menu" [class.show-mobile]="showMobileMenu">
@@ -15,13 +16,14 @@
 
     <!-- Welcome Text -->
     <ng-container *ngIf="isLoggedIn">
-      <span class="welcome-text">Welcome, {{ fullName }}</span>
+      <!-- <span class="welcome-text">Welcome, {{ fullName }}</span> -->
       <!-- <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a> -->
       <!-- Admin Links -->
       <ng-container *ngIf="isAdmin">
         <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
       </ng-container>
 
+      
 
 
       <button (click)="logout()" class="nav-button">Logout</button>
