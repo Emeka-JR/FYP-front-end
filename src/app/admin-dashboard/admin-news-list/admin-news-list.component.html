@@ -100,4 +100,21 @@
       </li>
     </ul>
   </nav>
+</div>
+
+<!-- Custom Confirmation Dialog -->
+<div class="modal-overlay" *ngIf="showDeleteConfirm" (click)="cancelDelete()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h5 class="modal-title">Confirm Delete</h5>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete "<strong>{{ newsToDelete?.title }}</strong>"?</p>
+      <p class="text-muted">This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
+      <button class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+    </div>
+  </div>
 </div> 

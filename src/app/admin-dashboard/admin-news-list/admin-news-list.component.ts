@@ -25,6 +25,8 @@ export class AdminNewsListComponent implements OnInit {
     'Opportunities'
   ];
   Math = Math; // Make Math available in template
+  showDeleteConfirm = false;
+  newsToDelete: News | null = null;
 
   constructor(private newsService: NewsService) {}
 
@@ -69,22 +71,36 @@ export class AdminNewsListComponent implements OnInit {
   }
 
   onDelete(news: News) {
-    if (confirm('Are you sure you want to delete this news article? This action cannot be undone.')) {
-      this.newsService.deleteNews(news.id).subscribe({
-        next: () => {
-          this.loadNews();
-        },
-        error: (error: any) => {
-          console.error('Error deleting news:', error);
-          if (error.error?.detail) {
-            this.error = error.error.detail;
-          } else if (error.error?.message) {
-            this.error = error.error.message;
-          } else {
-            this.error = 'Failed to delete news article. Please try again later.';
-          }
+    this.newsToDelete = news;
+    this.showDeleteConfirm = true;
+  }
+
+  cancelDelete() {
+    this.showDeleteConfirm = false;
+    this.newsToDelete = null;
+  }
+
+  confirmDelete() {
+    if (!this.newsToDelete) return;
+    
+    this.newsService.deleteNews(this.newsToDelete.id).subscribe({
+      next: () => {
+        this.showDeleteConfirm = false;
+        this.newsToDelete = null;
+        this.loadNews();
+      },
+      error: (error: any) => {
+        console.error('Error deleting news:', error);
+        if (error.error?.detail) {
+          this.error = error.error.detail;
+        } else if (error.error?.message) {
+          this.error = error.error.message;
+        } else {
+          this.error = 'Failed to delete news article. Please try again later.';
         }
-      });
-    }
+        this.showDeleteConfirm = false;
+        this.newsToDelete = null;
+      }
+    });
   }
 } 

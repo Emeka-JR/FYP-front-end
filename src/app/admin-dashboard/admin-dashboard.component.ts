@@ -10,6 +10,8 @@ import { News, NewsResponse } from '../models/news.model';
 })
 export class AdminDashboardComponent implements OnInit {
   articles: News[] = [];
+  showDeleteConfirm = false;
+  articleToDelete: News | null = null;
 
   constructor(
     private newsService: NewsService,
@@ -40,15 +42,29 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   deleteArticle(article: News) {
-    if (confirm('Are you sure you want to delete this article?')) {
-      this.newsService.deleteNews(article.id).subscribe({
-        next: () => {
-          this.articles = this.articles.filter(a => a.id !== article.id);
-        },
-        error: (error) => {
-          console.error('Error deleting article:', error);
-        }
-      });
-    }
+    this.articleToDelete = article;
+    this.showDeleteConfirm = true;
+  }
+
+  cancelDelete() {
+    this.showDeleteConfirm = false;
+    this.articleToDelete = null;
+  }
+
+  confirmDelete() {
+    if (!this.articleToDelete) return;
+    
+    this.newsService.deleteNews(this.articleToDelete.id).subscribe({
+      next: () => {
+        this.articles = this.articles.filter(a => a.id !== this.articleToDelete!.id);
+        this.showDeleteConfirm = false;
+        this.articleToDelete = null;
+      },
+      error: (error) => {
+        console.error('Error deleting article:', error);
+        this.showDeleteConfirm = false;
+        this.articleToDelete = null;
+      }
+    });
   }
 }
