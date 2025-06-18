@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       if (user) {
         this.isLoggedIn = true;
         this.isAdmin = user.role === 'admin';
-        this.fullName = user.username;
+        this.fullName = user.full_name || user.username || user.email;
       } else {
         this.isLoggedIn = false;
         this.isAdmin = false;

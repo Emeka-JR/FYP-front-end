@@ -6,12 +6,13 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminNewsFormComponent } from './admin-dashboard/admin-news-form/admin-news-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthService } from './Services/auth.service';
+import { NewsDetailsComponent } from './home/news-details/news-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  
+  { path: 'news/:id', component: NewsDetailsComponent },
   { 
     path: 'admin', 
     component: AdminDashboardComponent,

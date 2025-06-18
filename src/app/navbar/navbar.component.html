@@ -15,7 +15,7 @@
 
     <!-- Welcome Text -->
     <ng-container *ngIf="isLoggedIn">
-      <span class="welcome-text">Welcome</span>
+      <span class="welcome-text">Welcome, {{ fullName }}</span>
       <!-- <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a> -->
       <!-- Admin Links -->
       <ng-container *ngIf="isAdmin">

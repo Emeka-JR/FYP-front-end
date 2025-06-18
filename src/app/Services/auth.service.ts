@@ -61,8 +61,8 @@ export class AuthService implements CanActivate {
     );
   }
 
-  register(email: string, password: string, username: string, role: string, adminCode?: string): Observable<AuthResponse> {
-    const payload: any = { email, password, username, role };
+  register(email: string, password: string, full_name: string, role: string, adminCode?: string): Observable<AuthResponse> {
+    const payload: any = { email, password, full_name, role };
     if (role === 'admin' && adminCode) {
       payload.adminCode = adminCode;
     }
