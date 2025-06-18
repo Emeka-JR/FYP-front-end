@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../Services/news.service';
+import { News } from '../models/news.model';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,12 @@ import { NewsService } from '../Services/news.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  featuredNews: any[] = [];
-  latestNews: any[] = [];
+  newsList: News[] = [];
   loading = false;
   error: string | null = null;
+  currentPage = 1;
+  pageSize = 6;
+  totalNews = 0;
 
   constructor(private newsService: NewsService) {}
 
@@ -18,31 +21,30 @@ export class HomeComponent implements OnInit {
     this.loadNews();
   }
 
-  loadNews(): void {
+  loadNews(page: number = 1): void {
     this.loading = true;
     this.error = null;
-
-    // Load featured news (most viewed)
-    this.newsService.listNews().subscribe({
+    this.newsService.listNews(page, this.pageSize).subscribe({
       next: (response) => {
-        this.featuredNews = response.items;
+        this.newsList = response.items;
+        this.totalNews = response.total;
+        this.currentPage = page;
         this.loading = false;
       },
       error: (error) => {
-        this.error = 'Failed to load featured news';
+        this.error = 'Failed to load news';
         this.loading = false;
-        console.error('Error loading featured news:', error);
+        console.error('Error loading news:', error);
       }
     });
+  }
 
-    // Load latest news
-    this.newsService.listNews().subscribe({
-      next: (response) => {
-        this.latestNews = response.items;
-      },
-      error: (error) => {
-        console.error('Error loading latest news:', error);
-      }
-    });
+  onPageChange(page: number) {
+    if (page < 1 || page > this.totalPages) return;
+    this.loadNews(page);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.totalNews / this.pageSize);
   }
 }

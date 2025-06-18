@@ -20,23 +20,53 @@
 
 .hero-section {
   text-align: center;
-  padding: 4rem 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
+  padding: 5rem 2rem 4rem 2rem;
+  background: linear-gradient(135deg, #fffbe6 0%, #FFD700 100%);
+  border-radius: 18px;
   margin-bottom: 3rem;
+  box-shadow: 0 6px 32px rgba(255, 215, 0, 0.10), 0 1.5px 8px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-section h1 {
-  font-size: 2.5rem;
-  color: #212529;
+  font-size: 2.8rem;
+  color: #111;
   margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.hero-section h1::after {
+  content: '';
+  display: block;
+  margin: 0.5rem auto 0 auto;
+  width: 80px;
+  height: 5px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #FFD700 0%, #B8860B 100%);
+}
+
+.hero-section .hero-icon {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  font-size: 3rem;
+  color: #FFD700;
+  filter: drop-shadow(0 2px 8px rgba(255,215,0,0.18));
 }
 
 .hero-section p {
-  font-size: 1.2rem;
-  color: #6c757d;
+  font-size: 1.25rem;
+  color: #333;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  z-index: 1;
 }
 
 .featured-news,
@@ -111,4 +141,56 @@
   .latest-news h2 {
     font-size: 1.5rem;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination .page-link {
+  background: #fff;
+  color: #111;
+  border: 1px solid #FFD700;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  min-width: 80px;
+  text-align: center;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pagination .page-link:disabled,
+.pagination .page-item.disabled .page-link {
+  background: #eee;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.pagination .page-link:hover:not(:disabled) {
+  background: #FFD700;
+  color: #111;
+}
+
+/* Make all news cards the same size */
+.news-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 420px;
+  max-height: 420px;
+}
+
+.news-image {
+  flex-shrink: 0;
+}
+
+.news-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

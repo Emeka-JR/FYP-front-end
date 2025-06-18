@@ -3,8 +3,15 @@
       <span class="news-category">{{ news.category }}</span>
       <span class="news-date">{{ news.created_at }}</span>
     </div>
-    <div class="news-image">
-      <img [src]="news.image_url || 'assets/default-news.jpg'" alt="News Image">
+    <div class="news-image" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fffbe6 0%, #FFD700 100%); min-height: 160px;">
+      <img *ngIf="news.image_url" [src]="news.image_url" alt="News Image" style="max-width: 100%; max-height: 100%; object-fit: cover; border-radius: 8px;" />
+      <ng-container *ngIf="!news.image_url">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="20" height="16" rx="3" fill="#FFD700" stroke="#B8860B" stroke-width="1.5"/>
+          <circle cx="8" cy="10" r="2" fill="#fff"/>
+          <path d="M2 18L8.5 11.5C9.32843 10.6716 10.6716 10.6716 11.5 11.5L22 18" stroke="#B8860B" stroke-width="1.5"/>
+        </svg>
+      </ng-container>
     </div>
     <div class="news-content">
       <h3 class="news-title">{{ news.title }}</h3>

@@ -2,7 +2,7 @@
   <h2>Admin Dashboard</h2>
   <div class="row mb-4">
     <div class="col-md-12">
-      <button class="btn btn-primary" (click)="createNewArticle()">Create News Article</button>
+      <button class="create-btn" (click)="createNewArticle()">Create News Article</button>
     </div>
   </div>
   <div class="row">
@@ -26,8 +26,8 @@
                   <td>{{ article.category }}</td>
                   <td>{{ article.created_at | date:'mediumDate' }}</td>
                   <td>
-                    <button class="btn btn-sm btn-primary me-2" (click)="editArticle(article)">Edit</button>
-                    <button class="btn btn-sm btn-danger" (click)="deleteArticle(article)">Delete</button>
+                    <button class="edit-btn me-2" (click)="editArticle(article)">Edit</button>
+                    <button class="delete-btn" (click)="deleteArticle(article)">Delete</button>
                   </td>
                 </tr>
               </tbody>

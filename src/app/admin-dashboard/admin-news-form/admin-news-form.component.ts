@@ -26,8 +26,6 @@ export class AdminNewsFormComponent implements OnInit {
     this.newsForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
       content: ['', [Validators.required, Validators.minLength(50)]],
-      source: [''],
-      tags: [''],
       image_url: ['']
     });
 
@@ -52,9 +50,7 @@ export class AdminNewsFormComponent implements OnInit {
         this.newsForm.patchValue({
           title: news.title,
           content: news.content,
-          source: news.source,
-          tags: news.tags?.join(', '),
-          image_url: news.image_url
+          image_url: news.image_url || ''
         });
         this.classificationResult = { category: news.category, confidence: news.confidence_score || 1 };
       },
@@ -95,8 +91,7 @@ export class AdminNewsFormComponent implements OnInit {
       const formData = this.newsForm.value;
       const newsData = {
         ...formData,
-        category: this.classificationResult?.category || 'Uncategorized',
-        tags: formData.tags ? formData.tags.split(',').map((tag: string) => tag.trim()) : []
+        category: this.classificationResult?.category || 'Uncategorized'
       };
 
       const request = this.isEditMode

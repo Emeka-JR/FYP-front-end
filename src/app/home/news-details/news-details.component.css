@@ -15,14 +15,16 @@
   button {
     margin-top: 20px;
     padding: 10px 15px;
-    background: #007bff;
-    color: white;
+    background: var(--primary-gold);
+    color: var(--primary-black);
+    font-weight: 700;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
   }
   
   button:hover {
-    background: #0056b3;
+    background: var(--primary-gold-dark);
+    color: var(--text-light);
   }
   

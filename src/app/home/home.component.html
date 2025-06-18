@@ -1,27 +1,30 @@
 <div class="home-container">
   <section class="hero-section">
+    <span class="hero-icon">&#11088;</span>
     <h1>Welcome to Campus News</h1>
     <p>Stay updated with the latest news and events from your campus</p>
   </section>
 
-  <section class="featured-news" *ngIf="!loading && !error">
-    <h2>Featured News</h2>
-    <div class="featured-grid">
-      <app-news-card
-        *ngFor="let news of featuredNews"
-        [news]="news"
-      ></app-news-card>
-    </div>
-  </section>
-
-  <section class="latest-news" *ngIf="!loading && !error">
-    <h2>Latest News</h2>
+  <section *ngIf="!loading && !error">
     <div class="news-grid">
       <app-news-card
-        *ngFor="let news of latestNews"
+        *ngFor="let news of newsList"
         [news]="news"
       ></app-news-card>
     </div>
+    <nav *ngIf="totalPages > 1" class="mt-4" aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
+        </li>
+        <li class="page-item">
+          <span class="page-link">Page {{ currentPage }} of {{ totalPages }}</span>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <button class="page-link" [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next</button>
+        </li>
+      </ul>
+    </nav>
   </section>
 
   <div *ngIf="loading" class="loading-spinner">

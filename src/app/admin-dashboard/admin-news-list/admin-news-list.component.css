@@ -108,13 +108,13 @@ th {
 }
 
 .edit-btn {
-  background-color: #28a745;
-  color: white;
+  background-color: #FFD700 !important;
+  color: #111 !important;
 }
 
 .delete-btn {
-  background-color: #dc3545;
-  color: white;
+  background-color: #111 !important;
+  color: #FFD700 !important;
 }
 
 .no-news {
@@ -131,8 +131,8 @@ th {
 }
 
 .pagination button {
-  background-color: #007bff;
-  color: white;
+  background-color: #FFD700 !important;
+  color: #111 !important;
 }
 
 .pagination span {

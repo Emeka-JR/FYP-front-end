@@ -57,8 +57,8 @@
           <td>{{ article.title }}</td>
           <td>{{ article.category }}</td>
               <td>
-                <button class="btn btn-sm btn-primary me-2" [routerLink]="['/admin/news/edit', article.id]">Edit</button>
-                <button class="btn btn-sm btn-danger" (click)="onDelete(article)">Delete</button>
+                <button class="edit-btn me-2" [routerLink]="['/admin/news/edit', article.id]">Edit</button>
+                <button class="delete-btn" (click)="onDelete(article)">Delete</button>
           </td>
         </tr>
         <tr *ngIf="news.length === 0">

@@ -52,37 +52,8 @@
               </div>
             </div>
 
-            <div *ngIf="classificationResult" class="alert alert-info mb-3">
-              <h3 class="h5">Automatic Classification</h3>
-              <p class="mb-1">Category: <strong>{{ classificationResult.category }}</strong></p>
-              <p class="mb-0">Confidence: {{ (classificationResult.confidence * 100).toFixed(1) }}%</p>
-            </div>
-
             <div class="mb-3">
-              <label for="source" class="form-label">Source</label>
-              <input 
-                type="text" 
-                class="form-control"
-                id="source" 
-                formControlName="source" 
-                placeholder="Enter news source (optional)"
-              >
-            </div>
-
-            <div class="mb-3">
-              <label for="tags" class="form-label">Tags</label>
-              <input 
-                type="text" 
-                class="form-control"
-                id="tags" 
-                formControlName="tags" 
-                placeholder="Enter tags separated by commas (optional)"
-              >
-              <div class="form-text">Example: education, technology, campus</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="image_url" class="form-label">Image URL</label>
+              <label for="image_url" class="form-label">Image URL (optional)</label>
               <input 
                 type="url" 
                 class="form-control"
@@ -90,6 +61,12 @@
                 formControlName="image_url" 
                 placeholder="Enter image URL (optional)"
               >
+            </div>
+
+            <div *ngIf="classificationResult" class="alert alert-info mb-3">
+              <h3 class="h5">Automatic Classification</h3>
+              <p class="mb-1">Category: <strong>{{ classificationResult.category }}</strong></p>
+              <p class="mb-0">Confidence: {{ (classificationResult.confidence * 100).toFixed(1) }}%</p>
             </div>
 
             <div class="d-flex gap-2 justify-content-end">

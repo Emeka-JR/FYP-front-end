@@ -4,24 +4,25 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%);
+  background: #fff;
   padding: 20px;
 }
 
 .auth-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: #111;
   padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
   width: 100%;
   max-width: 420px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #FFD700;
+  color: #FFD700;
 }
 
 .auth-card h2 {
   text-align: center;
-  color: #4a148c;
+  color: #FFD700;
   margin-bottom: 0.5rem;
   font-size: 2rem;
   font-weight: 700;
@@ -42,7 +43,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #4a148c;
+  color: #FFD700;
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -51,19 +52,21 @@
 .form-group select {
   width: 100%;
   padding: 0.875rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #FFD700;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: #f8f9fa;
+  background: #222;
+  color: #FFD700;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #4caf50;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
-  background: #fff;
+  border-color: #B8860B;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.18);
+  background: #111;
+  color: #FFD700;
 }
 
 .form-group input.is-invalid,
@@ -75,22 +78,25 @@
 .btn-submit {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
-  color: white;
+  background: #FFD700;
+  color: #111;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 1rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.12);
 }
 
 .btn-submit:hover:not(:disabled) {
+  background: #B8860B;
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.18);
 }
 
 .btn-submit:active:not(:disabled) {
@@ -107,14 +113,14 @@
   display: block;
   text-align: center;
   margin-top: 1.5rem;
-  color: #4a148c;
+  color: #FFD700;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .btn-switch:hover {
-  color: #4caf50;
+  color: #B8860B;
 }
 
 /* Error Messages */

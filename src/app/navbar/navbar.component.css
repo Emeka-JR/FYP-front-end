@@ -1,5 +1,5 @@
 .navbar {
-  background-color: var(--primary-purple);
+  background-color: var(--primary-black);
   padding: 1rem 2rem;
   position: fixed;
   top: 0;
@@ -18,14 +18,14 @@
 }
 
 .brand-link {
-  color: var(--text-light);
+  color: var(--primary-gold);
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
 .brand-link:hover {
-  color: var(--light-green);
+  color: var(--primary-gold-dark);
 }
 
 .navbar-menu {
@@ -35,20 +35,16 @@
 }
 
 .nav-link {
-  color: var(--text-light);
+  color: var(--primary-gold);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
   padding: 0.5rem 1rem;
 }
 
-.nav-link:hover {
-  color: var(--light-green);
-}
-
-.nav-link.active {
-  color: var(--light-green);
-  border-bottom: 2px solid var(--light-green);
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-gold-dark);
+  border-bottom: 2px solid var(--primary-gold-dark);
 }
 
 .user-menu {
@@ -63,8 +59,8 @@
 }
 
 .nav-button {
-  background-color: var(--light-green);
-  color: var(--text-dark);
+  background-color: var(--primary-gold);
+  color: var(--text-light);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -74,7 +70,7 @@
 }
 
 .nav-button:hover {
-  background-color: var(--dark-green);
+  background-color: var(--primary-gold-dark);
 }
 
 .mobile-menu-button {
@@ -129,7 +125,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--primary-purple);
+    background-color: var(--primary-black);
     padding: 1rem;
     flex-direction: column;
     gap: 1rem;
