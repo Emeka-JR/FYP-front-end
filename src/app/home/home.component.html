@@ -5,6 +5,29 @@
     <p>Stay updated with the latest news and events from your campus</p>
   </section>
 
+  <section class="search-filter-bar" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 2rem;">
+    <input
+      #searchInput
+      type="text"
+      class="form-control"
+      style="max-width: 300px; min-width: 180px;"
+      placeholder="Search news by title or content..."
+      [value]="searchText"
+      (keyup.enter)="onSearch(searchInput.value)"
+      (change)="onSearch(searchInput.value)"
+    />
+    <select
+      #categorySelect
+      class="form-select"
+      style="max-width: 200px; min-width: 120px;"
+      [value]="filterCategory"
+      (change)="onFilterCategory(categorySelect.value)">
+      <option value="">All Categories</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+    <button class="btn btn-primary" (click)="onSearch(searchInput.value)">Search</button>
+  </section>
+
   <section *ngIf="!loading && !error">
     <div class="news-grid">
       <app-news-card

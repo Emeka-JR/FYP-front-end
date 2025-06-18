@@ -194,3 +194,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.search-filter-bar .btn-primary {
+  background-color: #111 !important;
+  color: #FFD700 !important;
+  border: 1.5px solid #FFD700 !important;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+.search-filter-bar .btn-primary:hover:not(:disabled) {
+  background-color: #FFD700 !important;
+  color: #111 !important;
+}
