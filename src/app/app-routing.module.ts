@@ -9,7 +9,7 @@ import { AuthService } from './Services/auth.service';
 import { NewsDetailsComponent } from './home/news-details/news-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'news/:id', component: NewsDetailsComponent },

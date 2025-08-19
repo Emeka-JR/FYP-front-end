@@ -5,17 +5,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  --primary-gold: #FFD700;
-  --primary-gold-dark: #B8860B;
-  --primary-black: #111111;
-  --primary-black-dark: #222222;
-  --text-light: #fff;
-  --text-dark: #222;
-  --background-light: #fff;
-  --background-dark: #f5f5f5;
-  --error-red: #dc3545;
-  --success-green: #28a745;
-  --warning-yellow: #ffc107;
+  /* Academic & Classic Color Palette */
+  --primary-gold: #CFB53B;      /* Old Gold - less bright, more sophisticated */
+  --primary-gold-dark: #A08E2D; /* Darker shade of old gold */
+  --primary-black: #800020;     /* Deep Burgundy */
+  --primary-black-dark: #600018;/* Darker Burgundy */
+  --text-light: #FAF9F6;        /* Off-White for text on dark backgrounds */
+  --text-dark: #212121;         /* Almost Black for main text */
+  --background-light: #FAF9F6;  /* Off-White/Cream background */
+  --background-dark: #F0EDE5;   /* Slightly darker cream for contrast */
+  
+  /* Utility Colors - Keeping existing names but adjusting for academic theme */
+  --error-red: #8B0000;         /* Darker red for errors */
+  --success-green: #2E5C4B;     /* Muted green for success */
+  --warning-yellow: #B8860B;    /* Darker gold for warnings */
+
+  /* Additional Academic Theme Colors */
+  --accent-border: #D4C36C;     /* Lighter gold for borders */
+  --hover-burgundy: #9A0026;    /* Slightly lighter burgundy for hover states */
 }
 
 * {
@@ -67,7 +74,192 @@ input, select, textarea {
   vertical-align: middle;
 }
 
+/* Button Styles */
+.btn-primary {
+  background-color: var(--primary-black) !important;
+  border-color: var(--primary-black) !important;
+  color: var(--text-light) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-burgundy) !important;
+  border-color: var(--hover-burgundy) !important;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary-black) !important;
+  color: var(--primary-black) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-black) !important;
+  color: var(--text-light) !important;
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--background-light);
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: var(--primary-black);
+  color: var(--text-light);
+  border-bottom: 2px solid var(--primary-gold);
+}
+
+/* Table Styles */
+.table thead th {
+  background-color: var(--primary-black);
+  color: var(--text-light);
+  border-bottom: 2px solid var(--primary-gold);
+}
+
+.table tbody tr:hover {
+  background-color: var(--background-dark);
+}
+
+/* Form Controls */
+.form-control:focus {
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 0 0.2rem rgba(207, 181, 59, 0.25);
+}
+
+/* Enhanced Dropdown/Select Styling */
+select, .form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: 
+    linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%),
+    url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23800020' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 0.75rem center;
+  background-size: 1em auto, 16px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.875rem 2.5rem 0.875rem 1rem;
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+select:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 0 3px rgba(207, 181, 59, 0.2);
+  transform: translateY(-1px);
+}
+
+select:hover, .form-select:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 4px 8px rgba(128, 0, 32, 0.1);
+}
+
+/* Dropdown Options Styling */
+select option, .form-select option {
+  background: var(--background-light);
+  color: var(--text-dark);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+select option:hover, .form-select option:hover {
+  background: var(--primary-gold);
+  color: var(--primary-black);
+}
+
+select option:checked, .form-select option:checked {
+  background: 
+    linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+  color: var(--primary-black);
+  font-weight: 600;
+}
+
+/* Category Filter Specific Styling */
+.category-filter select {
+  min-width: 200px;
+  background: 
+    linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
+  border: 2px solid var(--accent-border);
+  border-radius: 8px;
+  padding: 0.875rem 2.5rem 0.875rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-black);
+  box-shadow: 
+    0 4px 12px rgba(128, 0, 32, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-filter select:focus {
+  border-color: var(--primary-gold);
+  box-shadow: 
+    0 0 0 3px rgba(207, 181, 59, 0.2),
+    0 6px 20px rgba(128, 0, 32, 0.12);
+  transform: translateY(-2px);
+}
+
+.category-filter select:hover {
+  border-color: var(--primary-gold);
+  box-shadow: 
+    0 6px 20px rgba(128, 0, 32, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Links */
+a {
+  color: var(--primary-black);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--hover-burgundy);
+  text-decoration: underline;
+}
+
+/* Navbar specific overrides */
 .navbar, .navbar-menu {
   background: var(--primary-black) !important;
   color: var(--primary-gold) !important;
+}
+
+.nav-link {
+  color: var(--primary-gold) !important;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-light) !important;
+}
+
+/* Custom button styles */
+.create-btn, .edit-btn {
+  background-color: var(--primary-black);
+  color: var(--text-light);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.create-btn:hover, .edit-btn:hover {
+  background-color: var(--hover-burgundy);
+}
+
+.delete-btn {
+  background-color: var(--error-red);
+  color: var(--text-light);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #A00000;
 }

@@ -3,35 +3,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background-color: var(--background-dark);
   padding: 20px;
 }
 
 .auth-card {
-  background: #fff;
-  border-radius: 14px;
+  background: var(--background-light);
+  border-radius: 8px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   width: 100%;
   max-width: 420px;
-  padding: 32px 28px 28px 28px;
-  border: 1.5px solid #FFD700;
+  padding: 32px;
+  border: 1px solid var(--accent-border);
 }
 
-.auth-header {
+h2 {
+  color: var(--primary-black);
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 28px;
-  h2 {
-    color: #222;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-  }
-  .auth-subtitle {
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 0;
-  }
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-dark);
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .auth-form {
@@ -39,50 +36,79 @@
     margin-bottom: 20px;
     label {
       display: block;
-      color: #222;
+      color: var(--primary-black);
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 8px;
-      letter-spacing: 0.2px;
-      border-bottom: 2px solid #FFD700;
-      width: fit-content;
-      padding-bottom: 2px;
     }
     input, select {
       width: 100%;
       padding: 12px;
-      border: 1.5px solid #ccc;
+      border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 15px;
       transition: border-color 0.2s, box-shadow 0.2s;
       background-color: #fff;
-      color: #222;
-      &::placeholder {
-        color: #bbb;
-      }
+      color: var(--text-dark);
+
       &:focus {
         outline: none;
-        border-color: #FFD700;
-        box-shadow: 0 0 0 2px rgba(255,215,0,0.10);
-        background-color: #fff;
-        color: #222;
+        border-color: var(--primary-gold);
+        box-shadow: 0 0 0 3px rgba(207, 181, 59, 0.2);
       }
       &.is-invalid {
-        border-color: #dc3545;
+        border-color: var(--error-red);
       }
     }
-    .error-message {
-      color: #dc3545;
-      font-size: 12px;
-      margin-top: 4px;
-    }
-    .help-text {
-      display: block;
-      color: #888;
-      font-size: 12px;
-      margin-top: 4px;
-    }
   }
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-black);
+  color: var(--text-light);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover:not(:disabled) {
+    background-color: var(--hover-burgundy);
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.btn-switch {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--primary-black);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--hover-burgundy);
+    text-decoration: underline;
+  }
+}
+
+.error-message {
+  color: var(--error-red);
+  font-size: 13px;
+  margin-top: 6px;
+  text-align: left;
 }
 
 .alert-error {
@@ -92,60 +118,6 @@
   border-radius: 6px;
   font-size: 14px;
   margin-bottom: 20px;
-}
-
-.btn-submit {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  background-color: #FFD700;
-  color: #111;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-submit:hover:not(:disabled) {
-  background-color: #B8860B;
-  color: #fff;
-}
-
-.btn-submit:active:not(:disabled) {
-  transform: none;
-}
-
-.btn-submit:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.btn-switch {
-  display: inline-block;
-  text-align: center;
-  margin-top: 0.5rem;
-  color: #222;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.btn-switch:hover {
-  color: #FFD700;
-  text-decoration: underline;
-}
-
-.form-actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
 }
 
 @keyframes spin {

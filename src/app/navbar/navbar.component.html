@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar" >
   <div class="navbar-brand">
     <a routerLink="/" class="brand-link">Campus News</a>
   </div>
@@ -10,9 +10,9 @@
   <span *ngIf="isLoggedIn" class="welcome-text">Hello, {{ fullName }}</span>
 
   <!-- Desktop menu -->
-  <div class="navbar-menu" [class.show-mobile]="showMobileMenu">
+  <div class="navbar-menu" [class.show-mobile]="showMobileMenu"*ngIf="isLoggedIn">
     <!-- Public Links -->
-    <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+    <a routerLink="/home" routerLinkActive="active" class="nav-link" >Home</a>
 
     <!-- Welcome Text -->
     <ng-container *ngIf="isLoggedIn">
